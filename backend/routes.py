@@ -14,7 +14,7 @@ def add_friend():
         data = request.json
         required_fields = ['name', 'role', 'description','gender']
         for fields in required_fields:
-            if fields not in data:
+            if fields not in data or not data.get(fields):
                 return jsonify({'error': f'{fields} is required'}), 400
             
         name = data.get('name')
